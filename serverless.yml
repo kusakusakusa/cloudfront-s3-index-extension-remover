@@ -11,7 +11,36 @@ provider:
   timeout: 30 # maximum 30 seconds for viewer-request events
   profile: ${self:custom.awsProfile} # aws named profile
   stage: ${opt:stage, 'dev'} # `sls deploy --stage production` if --stage is provided, else use dev
+  role: CloudfrontS3ExtensionRemoveRole
 
 functions:
   removeExtension:
     handler: handler.removeExtension
+
+resources:
+  Resources:
+    CloudfrontS3ExtensionRemoveRole:
+      Type: AWS::IAM::Role
+      Properties:
+        RoleName: CloudfrontS3ExtensionRemoveRole
+        AssumeRolePolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Principal:
+                Service:
+                  - lambda.amazonaws.com
+                  - edgelambda.amazonaws.com
+              Action: sts:AssumeRole
+        Policies:
+          - PolicyName: CloudfrontS3ExtensionRemoveRolePolicy
+            PolicyDocument:
+              Version: '2012-10-17'
+              Statement:
+                - Effect: Allow # note that these rights are given in the default policy and are required if you want logs out of your lambda(s)
+                  Action:
+                    - logs:CreateLogGroup
+                    - logs:CreateLogStream
+                    - logs:PutLogEvents
+                  Resource:
+                    - arn:aws:logs:*:*:*
