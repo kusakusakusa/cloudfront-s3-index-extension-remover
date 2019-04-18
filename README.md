@@ -17,9 +17,15 @@ sls deploy --stage prod
 ```
 
 * Go to Lamda in AWS Console, select the latest version for both functions.
-* Create trigger for Cloudfront and select to [deploy to `Lambda@Edge`](docs/deploy_to_lambda.jpg). If you created this trigger before, you can just select to [use existing trigger](docs/existing_trigger.jpg).
+* Create trigger for Cloudfront and select to deploy to `Lambda@Edge`.
+![deploy to Lambda@Edge][deploy_to_lambda]
+If you created this trigger before, you can just select to [use existing trigger.
+![Existing Lambda@Edge trigger is present][existing_trigger]
 * Change the `Cache behavior` according to your needs. These are the behaviours setup in Cloudfront.
 * Select `Origin request` for the `Cloudfront event` option.
 * Click `Deploy` and wait for the changes to propagate to all of the Cloudfront distribution.
 * You may need to invalidate your caches in Cloudfront.
 * The logs will be appear in an edge location near your location. Be sure to change the region if the you do not see the logs in your current selcted region in the AWS console.
+
+[deploy_to_lambda]: docs/deploy_to_lambda.jpg
+[existing_trigger]: docs/existing_trigger.jpg
