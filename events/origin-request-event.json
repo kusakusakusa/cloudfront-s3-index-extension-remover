@@ -1,0 +1,72 @@
+{
+    "Records": [
+        {
+            "cf": {
+                "config": {
+                    "distributionDomainName": "something.cloudfront.net",
+                    "distributionId": "something",
+                    "eventType": "origin-request"
+                },
+                "request": {
+                    "clientIp": "sth.sth.sth.sth",
+                    "headers": {
+                        "user-agent": [
+                            {
+                                "key": "User-Agent",
+                                "value": "Amazon CloudFront"
+                            }
+                        ],
+                        "via": [
+                            {
+                                "key": "Via",
+                                "value": "2.0 something.cloudfront.net (CloudFront)"
+                            }
+                        ],
+                        "x-forwarded-for": [
+                            {
+                                "key": "X-Forwarded-For",
+                                "value": "sth.sth.sth.sth"
+                            }
+                        ],
+                        "accept-encoding": [
+                            {
+                                "key": "Accept-Encoding",
+                                "value": "gzip"
+                            }
+                        ],
+                        "pragma": [
+                            {
+                                "key": "Pragma",
+                                "value": "no-cache"
+                            }
+                        ],
+                        "host": [
+                            {
+                                "key": "Host",
+                                "value": "www.something.s3.amazonaws.com"
+                            }
+                        ],
+                        "cache-control": [
+                            {
+                                "key": "Cache-Control",
+                                "value": "no-cache"
+                            }
+                        ]
+                    },
+                    "method": "GET",
+                    "origin": {
+                        "s3": {
+                            "authMethod": "origin-access-identity",
+                            "customHeaders": {},
+                            "domainName": "something",
+                            "path": "",
+                            "region": "ap-southeast-1"
+                        }
+                    },
+                    "querystring": "",
+                    "uri": "/something"
+                }
+            }
+        }
+    ]
+}
