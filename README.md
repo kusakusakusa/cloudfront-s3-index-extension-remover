@@ -1,6 +1,6 @@
 # Description
 
-A Lambda@Edge funtion to be used with AWS Cloudfront to serve the index.html file of a subdirectory in an S3 bucket.
+A Lambda@Edge function to be used with AWS Cloudfront to serve the index.html file of a subdirectory in an S3 bucket.
 
 # Inspiration
 
