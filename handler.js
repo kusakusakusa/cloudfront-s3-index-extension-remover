@@ -30,32 +30,16 @@ module.exports.removeExtension = async (event) => {
     return request;
   }
 
+  // add trailing / if dont have
+  if (!hasTrailingSlash(uri)) {
+    uri += '/'
+  }
+
   // add index.html to get to the root of the files
   if (hasTrailingSlash(uri)) {
     uri += 'index.html'
   } else {
     uri += '/index.html';
-  }
-
-  console.log(`return new request object with new uri: ${uri}`);
-  request.uri = uri;
-  return request;
-};
-
-module.exports.addTrailingSlash = async (event) => {
-  console.log(`event: ${JSON.stringify(event)}`);
-  let request = event.Records[0].cf.request
-  let uri = request.uri;
-  console.log(`uri: ${uri}`);
-
-  // if is an asset request, just return request object
-  if (isAssetRequest(uri)) {
-    return request;
-  }
-
-  // add trailing / if dont have
-  if (!hasTrailingSlash(uri)) {
-    uri += '/'
   }
 
   console.log(`return new request object with new uri: ${uri}`);

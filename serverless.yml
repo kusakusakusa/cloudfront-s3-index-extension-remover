@@ -16,9 +16,6 @@ functions:
   removeExtension:
     handler: handler.removeExtension
     timeout: 30 # maximum 30 seconds for origin-request events
-  addTrailingSlash:
-    handler: handler.addTrailingSlash
-    timeout: 5 # maximum 30 seconds for viewer-request events
 
 resources:
   Resources:
